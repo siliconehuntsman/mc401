@@ -17,11 +17,11 @@ From the side of Open Remote server user needs to define serial port used for co
 
 ## Deployment
 The agent is written in Java and depends on OpenRemote objects and jSerialComm library (https://fazecast.github.io/jSerialComm/). To build it you need to setup custom project as instructed at OpenRemote Wiki page and keep mc401 as submodule. Please use this command to create submodule in your Open Remote project `git submodule add -b master https://github.com/siliconehuntsman/mc401.git mc401/`
-Gradle script is provided to build and deploy the agent, the deploy process itself is merely coping output jar to deployment/extensions folder of your Open Remote project. User also needs to download and copy jSerialComm jar file to extensions folder. 
+Gradle script is provided to build and deploy the agent, the deployment process itself is merely coping output jar to deployment/extensions folder of your Open Remote project. User also needs to download and copy jSerialComm jar file to extensions folder. 
 
 The simplest way to execute the whole flow (compile, build, test and deploy) is to run: `./gradle :mc401` from root of your Open Remote project.
 
-## Test
+## Tests
 The MC401 is provided with set of tests that exercise the most of implemented functionalities. So far only elements implemented in mc401protocol class does not have automates tests and was tested "manually" in OpenRemote server. Tests are executed automatically
 
 ## Usage
