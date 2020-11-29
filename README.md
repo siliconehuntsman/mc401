@@ -45,7 +45,7 @@ Once server is restarted with jars added, the agent becomes available in OpenRem
 
 ## Field names
 The MC401 understands the following field names (in bold below). The names and descriptions are based on fields defined in MultiCal 401 Technical Description by Kalstrump
-1. Request number 1
+1. Response field to request number 1 
    * **Energy** - Accumulated energy
    * **Volume** - Volume
    * **Hours** - Hours
@@ -60,7 +60,7 @@ The MC401 understands the following field names (in bold below). The names and d
      - 004, 008 or 012 - Check temperature sensors, replace if needed
      - 016 - There is air in the flow sensor, release it
      
-2. Request number 2
+2. Response field to equest number 2
    * **CustNo2** - Meter number
    * **TA2** - Tarrif register 2; Tariff limits are only used when E=1,2,3 or 5 in the DDEFFGG field below
             Tarrif limits determine when tarrif registers need to accumulate energy reading.
@@ -88,7 +88,7 @@ The MC401 understands the following field names (in bold below). The names and d
      - GG (00) - Flow sensor coding of aux water meter (VB). E.g. GG=24 means that water meter VB is coded for 10 l/pulses.
     * **Date** - Date
     
-3. Request number 3: Request 3 is used to read target data, that is, data stored in the indicated day of the year and used for billing
+3. Response field to request number 3: Request 3 is used to read target data, that is, data stored in the indicated day of the year and used for billing
    * **CustNo3** - Meter number (equals to CustNo2)
    * **ReadingDay** - Reading day
    * **EnergyInPeriod** - Energy consumed within the last period
