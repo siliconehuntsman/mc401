@@ -33,7 +33,8 @@ manager:
 ```    
 
 ## Tests
-The MC401 is provided with set of tests that exercise the most of implemented functionalities. So far only elements implemented in mc401protocol class does not have automates tests and was tested "manually" in OpenRemote server. Tests are executed automatically
+The MC401 is provided with set of tests that exercise the most of implemented functionalities outside of OpenRemote server environment. So far only elements implemented in MC401protocol class do not have automated tests and were tested "manually" in OpenRemote server. Provided tests are executed automatically when project is build. Project contain static MC401Debug class with single static property ON. It should be set to true for debug and false for release run. This property is set to false disables some internal functions required to conduct invasive test.
+
 
 ## Usage
 Once server is restarted with jars added, the agent becomes available in OpenRemote. All names given to assets and attributes are for example only and can be selected according to user's desire.
