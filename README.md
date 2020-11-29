@@ -44,8 +44,8 @@ Once server is restarted with jars added, the agent becomes available in OpenRem
 4. Open asset again, now auto-discovery option should become available
 
 ## Field names
-The MC401 understands the following field names (in bold below). The names and descriptions are based on fields defined in MultiCal 401 Technical Description by Kalstrump
-1. Response field to request number 1 
+The MC401 understands the following field names (in bold). The names and descriptions are based on fields defined in MultiCal 401 Technical Description by Kalstrump
+1. Response field to request number 1:
    * **Energy** - Accumulated energy
    * **Volume** - Volume
    * **Hours** - Hours
@@ -60,7 +60,7 @@ The MC401 understands the following field names (in bold below). The names and d
      - 004, 008 or 012 - Check temperature sensors, replace if needed
      - 016 - There is air in the flow sensor, release it
      
-2. Response field to equest number 2
+2. Response field to equest number 2:
    * **CustNo2** - Meter number
    * **TA2** - Tarrif register 2; Tariff limits are only used when E=1,2,3 or 5 in the DDEFFGG field below
             Tarrif limits determine when tarrif registers need to accumulate energy reading.
