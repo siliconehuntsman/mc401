@@ -1,6 +1,6 @@
 # mc401
 ## Overview
-MC401 is a protocol agent for Open Remote automation server (https://openremote.io/) to read content of Multical(R) 401 Heater Meter from Kamstrup (https://products.kamstrup.com/index.php). 
+MC401 is a protocol agent for Open Remote v3 automation server (https://openremote.io/) to read content of Multical(R) 401 Heater Meter from Kamstrup (https://products.kamstrup.com/index.php). 
 
 The agent connects to the meter over regular serial port supporting RS-232 protocol. To talk with heat meter it requires adjustment of electrical level that is done by two optoisolator - one per each direction to and from the meter. Author successfully tested the isolation with serial ports with:
 * mother board (H370HD3 from Gigabyte)
