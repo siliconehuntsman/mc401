@@ -39,13 +39,14 @@ gwt {
 }
 
 task copyJar(type: Copy) {
+    dependsOn build
     from jar.outputs
     into "${project(':deployment').projectDir}/extensions"
 }
 
 // Automatically copy this extension into the deployment/manager/extensions/ directory
 task installDist(type: Copy) {
-    dependsOn copyJar
+    dependsOn build
     from jar.outputs
     into "${project(':deployment').projectDir}/manager/extensions"
 }
@@ -82,21 +83,8 @@ dependencies {
   
     // Use JUnit test framework
     //testImplementation 'junit:junit:4.12'
-	  testImplementation('org.junit.jupiter:junit-jupiter:5.6.2')
+    testImplementation('org.junit.jupiter:junit-jupiter:5.6.2')
   
-    //compile fileTree('manager') { include '*.jar' }
-    //compile fileTree('model') { include '*.jar' }
-    //compile fileTree('agent') { include '*.jar' }
-    
-    //compile files("${project(':openremote:model').buildDir}/classes")
-    
-    //compile project(':openremote:manager')
-        
-	//compile project(':openremote:agent'), project(':openremote:model')
-	
-	//compile project(':agent')
-	
-	//implementation files(project(":openremote:model").buildDir.getPath().concat("/libs"))
 	
 	//Dirty trickt to link corresponding compiled projects
 	implementation files('../openremote/model/build/libs/openremote-model-3.0-SNAPSHOT.jar',

@@ -66,7 +66,7 @@ public class MC401Protocol extends AbstractProtocol implements
     public static final String PROTOCOL_NAME = PROTOCOL_NAMESPACE + ":MC401Protocol";
     public static final String PROTOCOL_DISPLAY_NAME = "MC401";
     public static final String PROTOCOL_VERSION = "1.0";
-    public static final int DEFAULT_REQ_INTERVAL_MINS = 5; //Once per day
+    public static final int DEFAULT_REQ_INTERVAL_MINS = 1440; //Once per day
     public static final int MAX_REQ_INTERVAL_MINS = 43200; //Every 30 day
     public static final int MIN_REQ_INTERVAL_MINS = 60; //Every hour - NOT enforced for testing
     //Default values of Serial port control lines required by simple MC401 Opto Isolator used by author
