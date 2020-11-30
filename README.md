@@ -41,7 +41,7 @@ Once server is restarted with jars added, the agent becomes available in OpenRem
 1. Create asset of type agent, name it "mc_serv" and save it
 2. Open created asset and add attribute of MC401 type, name it "WaterHeatMeter" and save again
 3. Open asset again, extend created attribute WaterHeatMeter and edit its configuration (Attribute configuration) to indicate which serial port you like to use, by default there will be Linux style device name given – /dev/ttyS0. Save the asset
-4. During saving process, the validity of serial device configuration is checked, this covers existence of serial device
+4. During saving process, the validity of MC401 agent is checked, this covers existence of serial device
 5. Once configuration is successfully saved, the protocol will check if there is a Heat Meter installed on this serial port. Corresponding information will be given just below attribute name (WaterHeatMeter), protocol status will change from CONNECTING to CONNECTED and color of the attribute bar will change from yellow to green.
 If you change configuration in running system it could take a moment to change status due to process of emptying internal queues of running agent
 6. Open asset again, now auto-discovery option should become available. Please click “Select asset” and select in the left pane location where your heat meter shall be instantiated, click “Ok” and “Discover assets” buttons. In response new asset named “Heat meter” will be created, it will contain all fields of request number 1 populated. Please note that “Upload & import links from file” button does not work.
