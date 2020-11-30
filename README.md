@@ -74,7 +74,7 @@ The MC401 understands the following field names (in bold). The names and descrip
    * **Flow** - Flow
    * **PeakPwrFlw** - Peak power/flow actual
    * **Info** - Error code, Info field gives information about error code of the meter, currently documented values:
-     - 000 => Check that the flow direction is correct
+     - 000 - Check that the flow direction is correct
      - 004, 008 or 012 - Check temperature sensors, replace if needed
      - 016 - There is air in the flow sensor, release it
      
