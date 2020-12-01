@@ -23,15 +23,6 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.*;
-//import java.util.stream.*;
-//import java.util.stream.Collectors.*;
-
-
-//import org.junit.Test;
-//port org.junit.BeforeEach;
-
-//import static org.junit.Assert.*;
-
 
 import net.sfhome.openremote.protocol.mc401.*;
 

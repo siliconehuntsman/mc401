@@ -4,12 +4,8 @@
 package net.sfhome.openremote.protocol.mc401;
 
 import net.sfhome.openremote.protocol.mc401.TestUtils.*;
-//import net.sfhome.openremote.protocol.mc401.ResponseRequestTests.UpdateMonitor;
-//import net.sfhome.openremote.protocol.mc401.ResponseRequestTests.ScoreBoard;
-//import net.sfhome.openremote.protocol.mc401.ResponseRequestTests.ResponseGenerator;
 
 import com.google.gwt.regexp.shared.RegExp;
-//import org.gwtproject.regexp.shared.RegExp;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -32,12 +28,6 @@ import java.util.function.Supplier;
 import java.util.*;
 import java.util.stream.*;
 import java.util.stream.Collectors.*;
-
-
-//import org.junit.Test;
-//port org.junit.BeforeEach;
-
-//import static org.junit.Assert.*;
 
 
 import net.sfhome.openremote.protocol.mc401.*;
@@ -67,13 +57,7 @@ public class PortTests {
     // ***************************************************************************************************************
     //   TESTS
     // ***************************************************************************************************************
-    /*
-    @Test public void testSomeLibraryMethod() {
-        MC401Protocol classUnderTest = new MC401Protocol();
-        System.out.printf("Protocol name: %s", classUnderTest.getProtocolName());
-        assertEquals("MC401Client", classUnderTest.getProtocolName());
-    }
-    */
+
     final private AtomicInteger counter = new AtomicInteger(0);
     private synchronized void consumeResponse(String response) {
         System.out.println("Response update request! - " + response);
@@ -92,7 +76,7 @@ public class PortTests {
         Integer req1Period = 1; 
         Integer req2Period = 5;
         Integer req3Period = 8;
-       // Consumer<AttributeState> updateLinkedAttribute;
+
         UpdateMonitor monitor = new UpdateMonitor(20);
         ScheduledThreadPoolExecutor executor = (ScheduledThreadPoolExecutor) Executors.newScheduledThreadPool(1);
         executor.setRemoveOnCancelPolicy(true);
@@ -131,7 +115,7 @@ public class PortTests {
         Integer req1Period = 1; 
         Integer req2Period = 5;
         Integer req3Period = 8;
-       // Consumer<AttributeState> updateLinkedAttribute;
+
         ScheduledThreadPoolExecutor executor = (ScheduledThreadPoolExecutor) Executors.newScheduledThreadPool(1);
         executor.setRemoveOnCancelPolicy(true);
         
@@ -157,7 +141,6 @@ public class PortTests {
         //Inject into the queue a single message with request number 1
         connected = port.debugSimpleInjection((String response) -> consumeResponse(response));
         assertTrue(connected, "Posting queue message failed");
-        //CHYBA SĄ PROBLEMY Z WATKAMI SIEGAJACYMI TYCH SAMYCH DANYCH
         int count = 0;
         for(int i=0; i<15;i++) {
             count = port.debugGetQueueSize();
@@ -193,7 +176,6 @@ public class PortTests {
         Integer req1Period = 5; 
         Integer req2Period = 5;
         Integer req3Period = 8;
-       // Consumer<AttributeState> updateLinkedAttribute;
         ScheduledThreadPoolExecutor executor = (ScheduledThreadPoolExecutor) Executors.newScheduledThreadPool(1);
         executor.setRemoveOnCancelPolicy(true);
         

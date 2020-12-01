@@ -5,7 +5,6 @@ package net.sfhome.openremote.protocol.mc401;
 
 
 import com.google.gwt.regexp.shared.RegExp;
-//import org.gwtproject.regexp.shared.RegExp;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -31,12 +30,6 @@ import java.util.stream.*;
 import java.util.stream.Collectors.*;
 
 
-//import org.junit.Test;
-//port org.junit.BeforeEach;
-
-//import static org.junit.Assert.*;
-
-
 import net.sfhome.openremote.protocol.mc401.*;
 import net.sfhome.openremote.protocol.mc401.TestUtils.*;
 
@@ -53,19 +46,11 @@ public class ResponseRequestTests {
         
         //It is required to avoid NullPointerException during isolated tests of ResponseRequest class
         System.setProperty("MJX_IsolationTestMode", "true");
-       // System.out.printf("MJX_IsolationTestMode: " + System.getProperty("MJX_IsolationTestMode"));
     }
     
     // ***************************************************************************************************************
     //   TESTS
     // ***************************************************************************************************************
-    /*
-    @Test public void testSomeLibraryMethod() {
-        MC401Protocol classUnderTest = new MC401Protocol();
-        System.out.printf("Protocol name: %s", classUnderTest.getProtocolName());
-        assertEquals("MC401Client", classUnderTest.getProtocolName());
-    }
-    */
     
     @Test public void testFindRespNum() {
         
@@ -247,15 +232,6 @@ public class ResponseRequestTests {
             .forEach(entry -> processor.linkAttribute((AttributeRef) entry.get("attrRef"), (String) entry.get("fieldName") )); 
         processor.peepRegedAttr();
 
-        
-        /*
-        String response = new String("0000001 0000002 0027084 0002208 0002231 0000006 0000007 0000008 0000009 0000028 \r");
-        processor.accept(response);
-        
-        response = "0001122 0003344 0025566 0006677 0007788 0009996 0034257 0005653 0078909 0007654 \r";
-        processor.accept(response);
-        */
-        
         count = 0;
         for(int i=0; i<30;i++) {
             count = queue.size();
@@ -364,11 +340,7 @@ public class ResponseRequestTests {
         String response = new String("0000001 0000002 0027084 0002208 0002231 0000006 0000007 0000008 0000009 0000028 \r");
         processor.accept(response);
         
-        /*
-        response = "0001122 0003344 0025566 0006677 0007788 0009996 0034257 0005653 0078909 0007654 \r";
-        processor.accept(response);
-        */
-        
+       
         QueueMessage message;
         System.out.println("Wait for record in the queue");
             
