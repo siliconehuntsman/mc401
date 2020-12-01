@@ -11,13 +11,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.*;
-//import java.util.stream.Collectors.*;
-
-///import javax.persistance.*;
-
-//import JsonFormat.*;
-
-
 
 import org.openremote.agent.protocol.*;
 import org.openremote.agent.protocol.ProtocolExecutorService;
@@ -70,7 +63,7 @@ public class MC401Protocol extends AbstractProtocol implements
     public static final int MAX_REQ_INTERVAL_MINS = 43200; //Every 30 day
     public static final int MIN_REQ_INTERVAL_MINS = 60; //Every hour - NOT enforced for testing
     //Default values of Serial port control lines required by simple MC401 Opto Isolator used by author
-    //  Please check elcircuit folder for details
+    //  Please check README file for details
     public static final boolean DEFAULT_DTR_USED = true;
     public static final boolean DEFAULT_DTR_VALUE = false;
     public static final boolean DEFAULT_RTS_USED = true;
@@ -141,17 +134,6 @@ public class MC401Protocol extends AbstractProtocol implements
      
     protected final HashMap<AttributeRef, MC401Port> portMap = new HashMap<>();
     
-    /*
-    metaItemAny(
-            PROTOCOL_NAME + ":RTSvalue",  //String urn
-    		ACCESS_PRIVATE,               //Access access
-    		true,                         //bolean required
-            Value.create(true);           //Value initialValue
-            null,                         //String patternRegex
-            null,                         //String patternRegexFailure
-      */  
-    	    	      
- 
        
     @Override
     public AssetAttribute getProtocolConfigurationTemplate() {
@@ -193,15 +175,25 @@ public class MC401Protocol extends AbstractProtocol implements
     @Override
     public AttributeValidationResult validateProtocolConfiguration(AssetAttribute protocolConfiguration) {
         AttributeValidationResult result = super.validateProtocolConfiguration(protocolConfiguration);
-        String devName = protocolConfiguration.getMetaItem(META_PROTOCOL_DEVICE_NAME)
-            .flatMap(AbstractValueHolder::getValueAsString).orElseThrow(() ->
-              new IllegalArgumentException("Missing or invalid required meta item: "+  META_PROTOCOL_DEVICE_NAME));
-        
-        if(!MC401Port.checkSerialExist(devName)) {
+        if(result.isValid()) {
+            try {
+                String devName = protocolConfiguration.getMetaItem(META_PROTOCOL_DEVICE_NAME)
+                    .flatMap(AbstractValueHolder::getValueAsString).orElseThrow(() ->
+                      new IllegalArgumentException("Missing meta item: " +  META_PROTOCOL_DEVICE_NAME));
 
-            result.addAttributeFailure(
-                        new ValidationFailure(ValueHolder.ValueFailureReason.VALUE_INVALID, String.format("%s does not exist!", devName))
-                    ); 
+                LOG.log(Level.SEVERE, "Check if serial exists: " + devName);  
+
+                if(!MC401Port.checkSerialExist(devName)) {
+
+                    result.addAttributeFailure(
+                                new ValidationFailure(ValueHolder.ValueFailureReason.VALUE_INVALID, String.format("%s does not exist!", devName))
+                            ); 
+                }
+            } catch(IllegalArgumentException exp) {
+                 result.addAttributeFailure(
+                        new ValidationFailure(ValueHolder.ValueFailureReason.VALUE_REQUIRED, exp.getMessage())
+                );
+            }
         }
         return result;
     }
@@ -309,7 +301,6 @@ public class MC401Protocol extends AbstractProtocol implements
     
 	@Override
 	protected void doUnlinkProtocolConfiguration(Asset agent, AssetAttribute protocolConfiguration) {
-		// TODO Auto-generated method stub
         final AttributeRef protocolRef = protocolConfiguration.getReferenceOrThrow();
         final MC401Port port = portMap.get(protocolRef);
         
@@ -334,7 +325,7 @@ public class MC401Protocol extends AbstractProtocol implements
     
     @Override
 	protected List<MetaItemDescriptor> getLinkedAttributeMetaItemDescriptors() {
-		// return new ArrayList<>(ATTRIBUTE_META_ITEM_DESCRIPTORS);
+
         LOG.info("Producing Linked Attribute Descriptors");
 		return new ArrayList<>(ATTRIBUTE_META_ITEM_DESCRIPTORS);
 	}
@@ -382,7 +373,7 @@ public class MC401Protocol extends AbstractProtocol implements
     @Override
 	protected void processLinkedAttributeWrite(AttributeEvent event, Value processedValue,
 			AssetAttribute protocolConfiguration) {
-		// TODO Auto-generated method stub
+
 		LOG.info("LinkAttribute value: " + processedValue.toString() + 
                  " write: " + event.getAttributeName() + 
                  " from protocol: " + ProtocolConfiguration.getProtocolName(protocolConfiguration)
